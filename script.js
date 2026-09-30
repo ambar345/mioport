@@ -22,11 +22,16 @@ const prevBtn = document.getElementById('skillsPrev');
 const nextBtn = document.getElementById('skillsNext');
 
 if (track && prevBtn && nextBtn) {
-  const scrollAmount = 240;
+  const step = () => {
+    const card = track.querySelector('.skill-card');
+    if (!card) return 240;
+    const style = getComputedStyle(track);
+    return card.offsetWidth + parseFloat(style.columnGap || style.gap || 20);
+  };
   prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    track.scrollBy({ left: -step(), behavior: 'smooth' });
   });
   nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    track.scrollBy({ left: step(), behavior: 'smooth' });
   });
 }

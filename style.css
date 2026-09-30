@@ -372,21 +372,32 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
 /* ---------------------------------------------------
    HABILIDADES — carrusel
 --------------------------------------------------- */
-.skills-row { display: flex; align-items: center; gap: 12px; }
+.skills-row { position: relative; display: flex; align-items: center; gap: 12px; }
+
 .skills-track {
-  display: flex; gap: 20px;
+  display: flex;
+  gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   padding: 4px 2px 24px;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
 }
+.skills-track::-webkit-scrollbar { display: none; }
+
 .skill-card {
   flex: 0 0 220px;
+  scroll-snap-align: start;
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 22px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
+.skill-card:hover { transform: translateY(-4px); border-color: var(--fuchsia-soft); }
 .skill-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--fuchsia); }
 .skill-card p { color: var(--muted); font-size: 0.88rem; margin: 0; }
 
