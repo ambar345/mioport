@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambar — Portfolio</title>
+<meta name="description" content="Portfolio de Ambar, estudiante de Ingeniería Informática y Licenciatura en Sistemas en la UNJu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Ir al contenido</a>
+
+<header class="topnav">
+  <a href="#inicio" class="brand">AMBAR</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navLinks" aria-label="Navegación principal">
+    <a href="#inicio">Inicio</a>
+    <a href="#stack">Qué hago</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <section id="inicio" class="hero">
+    <div class="hero-glyphs" aria-hidden="true">
+      <span class="glyph glyph-1">&lt;/&gt;</span>
+      <span class="glyph glyph-2">λ</span>
+      <span class="glyph glyph-3">git</span>
+      <span class="glyph glyph-4">{ }</span>
+    </div>
+
+    <p class="hero-kicker">Hola, ¿qué tal?</p>
+    <h1 class="hero-name gradient-text">Ambar</h1>
+    <p class="hero-role">Estudiante de Ingeniería Informática &amp; Lic. en Sistemas</p>
+    <p class="hero-pitch">
+      Estoy terminando la carrera en la UNJu y armando mis primeros
+      proyectos en serio. Este portfolio va creciendo con cada uno.
+    </p>
+
+    <ul class="tag-pills">
+      <li>Python</li>
+      <li>Prolog</li>
+      <li>Lisp</li>
+      <li>JavaScript</li>
+      <li>Git</li>
+    </ul>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#proyectos">Ver proyectos →</a>
+      <a class="btn btn-ghost" href="#contacto">Escribime</a>
+    </div>
+
+    <a href="#stack" class="scroll-hint">
+      <span>Bajá para ver más</span>
+      <span class="scroll-arrow" aria-hidden="true">↓</span>
+    </a>
+  </section>
+
+  <section id="stack" class="section">
+    <h2 class="section-title centered">Qué hago</h2>
+    <div class="rule-center"></div>
+
+    <div class="cards-3">
+      <article class="do-card">
+        <div class="do-icon" aria-hidden="true">&lt;/&gt;</div>
+        <h3>Desarrollo</h3>
+        <p>Sitios y programas con Python, JavaScript, HTML/CSS — aprendiendo a escribir código prolijo y mantenible.</p>
+      </article>
+      <article class="do-card">
+        <div class="do-icon" aria-hidden="true">λ</div>
+        <h3>Lógica &amp; algoritmos</h3>
+        <p>Prolog, Lisp, teoría de grafos y estructuras de datos — la base que uso para resolver problemas antes de programarlos.</p>
+      </article>
+      <article class="do-card">
+        <div class="do-icon" aria-hidden="true">▤</div>
+        <h3>Recuperación de datos</h3>
+        <p>Clasificación de texto, minería de datos y sistemas de búsqueda — lo que estoy cursando ahora en RAIn.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="section about">
+    <div class="about-photo" aria-hidden="true">
+      <div class="about-photo-box">
+        <span class="hero-photo-label">tu foto acá</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <h2 class="section-title">Sobre mí</h2>
+      <div class="rule"></div>
+      <p>
+        Estoy en el último año de Ingeniería Informática y Licenciatura en
+        Sistemas en la Universidad Nacional de Jujuy. Durante la carrera
+        trabajé con recuperación de información, desarrollo sistemático de
+        programas, matemática discreta y sistemas operativos.
+      </p>
+      <p>
+        Todavía no tengo proyectos "de producción" para mostrar — este
+        portfolio es, en parte, el primero: armado y desplegado por mí,
+        y que voy llenando con lo que construya de acá en adelante.
+      </p>
+      <ul class="check-list">
+        <li>Último año de la carrera — UNJu</li>
+        <li>Python, Prolog, Lisp, HTML/CSS, JavaScript</li>
+        <li>Aprendiendo Git, control de versiones y deploy</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="proyectos" class="section">
+    <h2 class="section-title centered">Proyectos</h2>
+    <div class="rule-center"></div>
+    <p class="section-lede centered">
+      Todavía no hay nada publicado — estas tarjetas son el molde.
+      Reemplazalas por proyectos reales cuando los termines
+      (instrucciones en el <code>README.md</code>).
+    </p>
+
+    <!-- PROYECTOS: duplicá un <article class="project-card"> por cada proyecto nuevo -->
+    <div class="project-grid">
+
+      <article class="project-card project-card-empty">
+        <div class="project-thumb">
+          <span class="hero-photo-label">captura acá</span>
+        </div>
+        <h3 class="project-name">Proyecto 1</h3>
+        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      </article>
+
+      <article class="project-card project-card-empty">
+        <div class="project-thumb">
+          <span class="hero-photo-label">captura acá</span>
+        </div>
+        <h3 class="project-name">Proyecto 2</h3>
+        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      </article>
+
+      <article class="project-card project-card-empty">
+        <div class="project-thumb">
+          <span class="hero-photo-label">captura acá</span>
+        </div>
+        <h3 class="project-name">Proyecto 3</h3>
+        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      </article>
+
+      <article class="project-card project-card-empty">
+        <div class="project-thumb">
+          <span class="hero-photo-label">captura acá</span>
+        </div>
+        <h3 class="project-name">Proyecto 4</h3>
+        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="habilidades" class="section">
+    <h2 class="section-title centered">Habilidades</h2>
+    <div class="rule-center"></div>
+
+    <div class="skills-row">
+      <button class="skills-arrow" id="skillsPrev" aria-label="Anterior">‹</button>
+      <div class="skills-track" id="skillsTrack">
+        <article class="skill-card">
+          <h3>Python</h3>
+          <p>Lógica, scripts y ejercicios de cátedra.</p>
+        </article>
+        <article class="skill-card">
+          <h3>Prolog &amp; Lisp</h3>
+          <p>Programación declarativa y recursión.</p>
+        </article>
+        <article class="skill-card">
+          <h3>HTML / CSS / JS</h3>
+          <p>Sitios estáticos, como este mismo portfolio.</p>
+        </article>
+        <article class="skill-card">
+          <h3>Git &amp; GitHub</h3>
+          <p>Control de versiones y despliegue continuo.</p>
+        </article>
+      </div>
+      <button class="skills-arrow" id="skillsNext" aria-label="Siguiente">›</button>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h2>¿Tenés un proyecto en mente?<br>Hablemos.</h2>
+    <div class="hero-actions centered">
+      <a class="btn btn-primary" href="#contacto">Escribime</a>
+      <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+    </div>
+  </section>
+
+  <footer id="contacto" class="footer">
+    <div class="footer-brand">
+      <p class="brand">AMBAR</p>
+      <p class="footer-role">Ingeniería Informática &amp; Lic. en Sistemas — UNJu</p>
+    </div>
+    <ul class="contact-list">
+      <li><a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></li>
+      <li><a href="https://github.com/ambar345" target="_blank" rel="noopener">github.com/ambar345</a></li>
+      <li><a href="https://linkedin.com/in/ambar345" target="_blank" rel="noopener">linkedin.com/in/ambar345</a></li>
+    </ul>
+    <p class="footer-note">© 2026 Ambar. Todos los derechos reservados.</p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
