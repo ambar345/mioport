@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio de Ambar, estudiante de Ingeniería Informática y Licenciatura en Sistemas en la UNJu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,6 +69,7 @@
   </section>
 
   <section id="stack" class="section">
+    <span class="section-index centered" aria-hidden="true">01</span>
     <h2 class="section-title centered">Qué hago</h2>
     <div class="rule-center"></div>
 
@@ -97,6 +98,7 @@
         <img src="foto.jpeg" alt="Foto de Dalma" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">      </div>
     </div>
     <div class="about-text">
+      <span class="section-index" aria-hidden="true">02</span>
       <h2 class="section-title">Sobre mí</h2>
       <div class="rule"></div>
       <p>
@@ -121,51 +123,95 @@
   </section>
 
   <section id="proyectos" class="section">
+    <span class="section-index centered" aria-hidden="true">03</span>
     <h2 class="section-title centered">Proyectos</h2>
     <div class="rule-center"></div>
     <p class="section-lede centered">
       Proyectos académicos y personales desarrollados durante la carrera.
     </p>
 
-    <!-- PROYECTOS: duplicá un <article class="project-card"> por cada proyecto nuevo -->
+    <!-- FILTROS: solo visuales por ahora; la lógica de filtrado se agrega en una etapa posterior -->
+    <div class="project-filters" role="group" aria-label="Filtrar proyectos">
+      <button type="button" class="filter-pill is-active" aria-pressed="true">Todos</button>
+      <button type="button" class="filter-pill" aria-pressed="false">Web</button>
+      <button type="button" class="filter-pill" aria-pressed="false">Full Stack</button>
+      <button type="button" class="filter-pill" aria-pressed="false">Estudio</button>
+    </div>
+
     <div class="project-grid">
 
-      <article class="project-card">
-        <div class="project-thumb">
-          <img src="tutorias.jpg" alt="Panel de inicio del Sistema de Tutorías FI">
+      <article class="project-card project-card-featured">
+        <div class="shot-carousel">
+          <!-- CAPTURAS: reemplazar cada .shot-frame-label por <img src="..." alt="..." loading="lazy"> -->
+          <div class="shot-track" id="shotsTrack">
+            <figure class="shot">
+              <div class="shot-frame">
+                <div class="shot-frame-bar"><span></span><span></span><span></span></div>
+                <div class="shot-frame-body"><img src="tutorias.jpg" alt="Panel de inicio del Sistema de Tutorías FI" loading="lazy"></div>
+              </div>
+            </figure>
+            <figure class="shot">
+              <div class="shot-frame">
+                <div class="shot-frame-bar"><span></span><span></span><span></span></div>
+                <div class="shot-frame-body"><span class="shot-frame-label">Captura pendiente</span></div>
+              </div>
+            </figure>
+            <figure class="shot">
+              <div class="shot-frame">
+                <div class="shot-frame-bar"><span></span><span></span><span></span></div>
+                <div class="shot-frame-body"><span class="shot-frame-label">Captura pendiente</span></div>
+              </div>
+            </figure>
+            <figure class="shot">
+              <div class="shot-frame">
+                <div class="shot-frame-bar"><span></span><span></span><span></span></div>
+                <div class="shot-frame-body"><span class="shot-frame-label">Captura pendiente</span></div>
+              </div>
+            </figure>
+          </div>
+          <button class="shot-arrow shot-prev" id="shotsPrev" aria-label="Captura anterior">‹</button>
+          <button class="shot-arrow shot-next" id="shotsNext" aria-label="Captura siguiente">›</button>
+          <div class="shot-dots" id="shotsDots" aria-hidden="true"></div>
         </div>
-        <h3 class="project-name">Sistema de Tutorías FI</h3>
-        <p class="project-desc">Sistema web creado para el equipo de tutorías de la FI: digitaliza el registro de horas, eventos y consultas, reemplazando el control manual y permitiendo auditoría y métricas.</p>
+
+        <div class="project-featured-body">
+          <h3 class="project-name">Sistema de Tutorías</h3>
+          <p class="project-desc">Sistema web creado para el equipo de tutorías de la FI: digitaliza el registro de horas, eventos y consultas, reemplazando el control manual y permitiendo auditoría y métricas.</p>
+          <ul class="project-tags" aria-label="Tecnologías"><!-- TECNOLOGÍAS: completar con <li>Tecnología</li> --></ul>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://sistema-de-tutorias.vercel.app" target="_blank" rel="noopener">Ver proyecto</a>
+            <!-- GITHUB: completar href con la URL del repositorio -->
+            <a class="btn btn-ghost" href="#">GitHub</a>
+          </div>
+        </div>
       </article>
 
-      <article class="project-card project-card-empty">
-        <div class="project-thumb">
-          <span class="hero-photo-label">captura acá</span>
-        </div>
-        <h3 class="project-name">Proyecto 2</h3>
-        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      <!-- molde para proyectos futuros: duplicar este <article> y reemplazar el contenido cuando haya un proyecto nuevo -->
+      <article class="project-card project-card-soon" aria-label="Proyecto en desarrollo, próximamente">
+        <div class="soon-visual" aria-hidden="true"></div>
+        <span class="soon-badge">En desarrollo</span>
+        <h3 class="project-name">Próximamente</h3>
       </article>
 
-      <article class="project-card project-card-empty">
-        <div class="project-thumb">
-          <span class="hero-photo-label">captura acá</span>
-        </div>
-        <h3 class="project-name">Proyecto 3</h3>
-        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      <!-- molde para proyectos futuros -->
+      <article class="project-card project-card-soon" aria-label="Proyecto en desarrollo, próximamente">
+        <div class="soon-visual" aria-hidden="true"></div>
+        <span class="soon-badge">En desarrollo</span>
+        <h3 class="project-name">Próximamente</h3>
       </article>
 
-      <article class="project-card project-card-empty">
-        <div class="project-thumb">
-          <span class="hero-photo-label">captura acá</span>
-        </div>
-        <h3 class="project-name">Proyecto 4</h3>
-        <p class="project-desc">Una línea contando qué hace y para quién.</p>
+      <!-- molde para proyectos futuros -->
+      <article class="project-card project-card-soon" aria-label="Proyecto en desarrollo, próximamente">
+        <div class="soon-visual" aria-hidden="true"></div>
+        <span class="soon-badge">En desarrollo</span>
+        <h3 class="project-name">Próximamente</h3>
       </article>
 
     </div>
   </section>
 
   <section id="habilidades" class="section">
+    <span class="section-index centered" aria-hidden="true">04</span>
     <h2 class="section-title centered">Habilidades</h2>
     <div class="rule-center"></div>
 

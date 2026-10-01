@@ -37,9 +37,10 @@ if (track && prevBtn && nextBtn) {
 }
 
 // Zoom de capturas en las tarjetas de proyectos
-const zoomCards = [...document.querySelectorAll('.project-card')].filter((card) =>
-  card.querySelector('.project-thumb img')
-);
+const zoomCards = [
+  ...[...document.querySelectorAll('.project-card')].filter((card) => card.querySelector('.project-thumb img')),
+  ...[...document.querySelectorAll('.shot')].filter((shot) => shot.querySelector('.shot-frame-body img')),
+];
 
 if (zoomCards.length) {
   const overlay = document.createElement('div');
@@ -55,7 +56,8 @@ if (zoomCards.length) {
 
   let activeCard = null;
 
-  const thumbOf = (card) => card.querySelector('.project-thumb img');
+  const thumbOf = (card) => card.querySelector('.project-thumb img, .shot-frame-body img');
+  const isInactiveShot = (card) => card.classList.contains('shot') && !card.classList.contains('is-active');
 
   const targetRect = (img) => {
     const ratio = img.naturalWidth / img.naturalHeight || 1.6;
@@ -85,6 +87,7 @@ if (zoomCards.length) {
     `scale(${source.width / target.width}, ${source.height / target.height})`;
 
   const openZoom = (card) => {
+    if (isInactiveShot(card)) return;
     const img = thumbOf(card);
     const target = targetRect(img);
     activeCard = card;
@@ -142,4 +145,74 @@ if (zoomCards.length) {
   window.addEventListener('resize', () => {
     if (activeCard && overlay.classList.contains('open')) placeZoom(targetRect(thumbOf(activeCard)));
   });
+}
+
+// Carrusel de capturas del proyecto destacado
+const shotsTrack = document.getElementById('shotsTrack');
+const shotsPrev = document.getElementById('shotsPrev');
+const shotsNext = document.getElementById('shotsNext');
+const shotsDots = document.getElementById('shotsDots');
+
+if (shotsTrack && shotsPrev && shotsNext) {
+  const shots = [...shotsTrack.querySelectorAll('.shot')];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const behavior = () => (reducedMotion.matches ? 'auto' : 'smooth');
+
+  const step = () => {
+    const shot = shots[0];
+    if (!shot) return shotsTrack.clientWidth;
+    const style = getComputedStyle(shotsTrack);
+    return shot.offsetWidth + parseFloat(style.columnGap || style.gap || 18);
+  };
+
+  const goTo = (index) => {
+    shotsTrack.scrollTo({ left: index * step(), behavior: behavior() });
+  };
+
+  const dots = shots.map((_, index) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'shot-dot';
+    dot.tabIndex = -1;
+    dot.addEventListener('click', () => goTo(index));
+    if (shotsDots) shotsDots.appendChild(dot);
+    return dot;
+  });
+
+  let activeIndex = -1;
+  const update = () => {
+    const index = Math.max(0, Math.min(shots.length - 1, Math.round(shotsTrack.scrollLeft / step())));
+    if (index === activeIndex) return;
+    activeIndex = index;
+    shots.forEach((shot, i) => shot.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+  };
+
+  let ticking = false;
+  shotsTrack.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      update();
+      ticking = false;
+    });
+  }, { passive: true });
+
+  shotsPrev.addEventListener('click', () => {
+    shotsTrack.scrollBy({ left: -step(), behavior: behavior() });
+  });
+  shotsNext.addEventListener('click', () => {
+    shotsTrack.scrollBy({ left: step(), behavior: behavior() });
+  });
+  shots.forEach((shot, index) => {
+    shot.addEventListener('click', () => {
+      if (!shot.classList.contains('is-active')) goTo(index);
+    });
+  });
+  window.addEventListener('resize', () => {
+    activeIndex = -1;
+    update();
+  });
+
+  update();
 }
