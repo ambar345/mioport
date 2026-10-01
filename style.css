@@ -371,8 +371,19 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
-  padding: 7px 16px;
+  padding: 7px 16px 7px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
+.tag-pills li:hover { border-color: rgba(255, 45, 166, 0.3); color: var(--ink); }
+.pill-icon { width: 15px; height: 15px; flex-shrink: 0; display: block; }
+.pill-python { fill: url(#pyGrad); }
+.pill-vercel { fill: var(--ink); }
+.pill-supabase { fill: #3ECF8E; }
+.pill-postgres { fill: #8BB9F0; }
+.pill-git { fill: #F05032; }
 
 .hero-actions {
   display: flex;
