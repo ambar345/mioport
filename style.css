@@ -34,7 +34,7 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  .hero-ribbon, .glyph, .hero-spark { animation: none !important; }
+  .hero-ribbon, .glyph, .hero-spark, .hero-visual::before, .hero-visual::after { animation: none !important; }
 }
 
 body {
@@ -234,6 +234,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
     radial-gradient(circle at 62% 60%, rgba(109, 40, 217, 0.38), transparent 62%);
   filter: blur(48px);
   z-index: -1;
+  animation: breathe 10s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.85; transform: scale(0.97); }
+  50% { opacity: 1; transform: scale(1.04); }
 }
 .hero-visual::after {
   content: "";
@@ -244,6 +249,11 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
   background: radial-gradient(closest-side, rgba(192, 38, 211, 0.35), rgba(8, 7, 10, 0) 100%);
   filter: blur(10px);
   z-index: -1;
+  animation: shadow-drift 12s ease-in-out infinite;
+}
+@keyframes shadow-drift {
+  0%, 100% { opacity: 1; transform: scaleX(1); }
+  50% { opacity: 0.65; transform: scaleX(0.9); }
 }
 .hero-orbit {
   position: absolute;
@@ -266,14 +276,14 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
   width: 100%;
   height: 100%;
   opacity: 0;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 30px rgba(192, 38, 211, 0.25));
   transition: opacity 1.2s ease;
-  animation: drift 14s ease-in-out infinite;
+  animation: drift 12s ease-in-out infinite;
+  will-change: transform;
 }
 .hero-ribbon.is-ready { opacity: 1; }
 @keyframes drift {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(2.5deg); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
 }
 
 .hero-spark {
