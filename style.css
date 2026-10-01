@@ -813,11 +813,40 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(20px, 5vw, 64px)
 .skills-track::-webkit-scrollbar { display: none; }
 
 .skill-card {
-  flex: 0 0 220px;
+  flex: 0 0 230px;
   scroll-snap-align: start;
   padding: 22px;
 }
 .skill-card h3 { font-size: 1rem; margin-bottom: 8px; color: var(--fuchsia); }
+.skill-icons { display: flex; gap: 10px; margin-bottom: 18px; }
+.skill-icon {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-icon svg { width: 22px; height: 22px; display: block; }
+.skill-card:hover .skill-icon {
+  border-color: rgba(255, 45, 166, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 18px -6px var(--glow-fuchsia);
+}
+.icon-python svg { fill: url(#pyGrad); }
+.icon-html svg { fill: #E34F26; }
+.icon-css svg { fill: #2B8BE0; }
+.icon-js svg { fill: #F7DF1E; border-radius: 3px; }
+.icon-git svg { fill: #F05032; }
+.icon-github svg { fill: var(--ink); }
+.icon-glyph {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--fuchsia-bright);
+  background: linear-gradient(160deg, rgba(255, 45, 166, 0.14), rgba(109, 40, 217, 0.12));
+  border-color: rgba(255, 45, 166, 0.22);
+}
 .skill-card p { color: var(--muted); font-size: 0.88rem; margin: 0; }
 
 .skills-arrow {
